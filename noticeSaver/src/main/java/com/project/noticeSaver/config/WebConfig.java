@@ -13,12 +13,20 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry
+        /**/
+        //No need registry for load resource files
+        /**/
+        /*registry
                 .addResourceHandler("/resources/**")
                 .addResourceLocations("/resources/");
 
         registry
                 .addResourceHandler("/static/**")
-                .addResourceLocations("/static/");
+                .addResourceLocations("/static/");*/
+
+        /*registry
+                .addResourceHandler("/styles/**")
+                .addResourceLocations("/resources/static/bootstrap-5.0.2/css");*/
+
     }
 }
