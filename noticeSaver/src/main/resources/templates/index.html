@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="utf-8">
+    <meta content-type="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="Alex Zheleznev">
@@ -16,6 +16,7 @@
 
     <script type="text/javascript" src="../static/bootstrap-5.0.2/js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript" src="../static/js/validator/signInValidator.js"></script>
+    <script type="text/javascript" src="../static/js/indexScripts/postFormFieldJSON.js"></script>
 </head>
     <body>
         <!--<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
@@ -45,25 +46,25 @@
                          class="img-fluid" alt="Sample image">
                 </div>
                 <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-                    <form action="/login" method="post" onsubmit="return validateIn()">
+                    <form action="/auth" id="auth-form" method="post" onsubmit="submitButton(); return false;"> <!--onsubmit="return validateIn()">-->
                         <div class="divider my-4">
                             <h1 class="text-center text-primary fw-bold mx-3 mb-0">Notice saver</h1>
                         </div>
 
                         <!-- Email input -->
                         <div class="form-outline mb-4">
-                            <p class="error" id="emailInErr"><br/></p>
                             <input type="email" id="emailInput" class="form-control form-control-lg"
-                                   placeholder="Enter a valid email address" name="email"/>
+                                   placeholder="Enter a valid email address" name="login"/>
                             <label class="form-label" for="emailInput">Email address</label>
+                            <p class="error" id="emailInErr"><br/></p>
                         </div>
 
                         <!-- Password input -->
                         <div class="form-outline mb-3">
-                            <p class="error" id="passwordInErr"><br/></p>
                             <input type="password" id="passwordInput" class="form-control form-control-lg"
                                    placeholder="Enter password" name="password"/>
                             <label class="form-label" for="passwordInput">Password</label>
+                            <p class="error" id="passwordInErr"><br/></p>
                         </div>
 
                         <div class="d-flex justify-content-between align-items-center">

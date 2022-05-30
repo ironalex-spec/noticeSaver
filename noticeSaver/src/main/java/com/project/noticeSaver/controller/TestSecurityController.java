@@ -15,7 +15,7 @@ public class TestSecurityController {
         return "Hi user";
     }
 
-    @GetMapping("/auth")
+    @GetMapping("/authGet")
     public String getAuth() {
         return "Auth";
     }

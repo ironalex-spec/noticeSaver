@@ -44,20 +44,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
     }
-
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
-
-    public String generateToken(String login) {
-        Date date = Date.from(LocalDate.now().plusDays(15).atStartOfDay(ZoneId.systemDefault()).toInstant());
-        return Jwts.builder()
-                .setSubject(login)
-                .setExpiration(date)
-                .signWith(SignatureAlgorithm.HS512, jwtSecret)
-                .compact();
-    }
 }
 
 

@@ -1,5 +1,6 @@
 /*
 mysql -u root -p
+123456
 source D:\Education\Own\JAVA\Projects\noticeSaver\Database\Scripts\user.sql
 */
 

@@ -27,9 +27,4 @@ public class UserController {
         return userEntityRepository.findAll();
     }
 
-    @PostMapping("/login")
-    public String login(@RequestParam String email, @RequestParam String password, Model model, HttpServletRequest request) {
-        System.out.println(email +" p="+ password);
-        return "index";
-    }
 }
