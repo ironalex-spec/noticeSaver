@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="user")
-public class User {
+public class UserEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,10 +16,34 @@ public class User {
     @Column(name="lastname")
     private String lastname;
 
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "role_id", referencedColumnName = "id")
+    private RoleEntity roleEntity;
+
+    @Column(name="login")
+    private String login;
+
     @Column(name="password")
     private String password;
 
-    public User(){};
+    public RoleEntity getRoleEntity() {
+        return roleEntity;
+    }
+
+    public void setRoleEntity(RoleEntity roleEntity) {
+        this.roleEntity = roleEntity;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public UserEntity(){};
 
     public Long getId() {
         return id;

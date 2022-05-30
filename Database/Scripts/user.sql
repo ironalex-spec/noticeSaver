@@ -14,22 +14,24 @@ CREATE TABLE IF NOT EXISTS user
 		firstname varchar(40),
 		lastname varchar(40),
 		email varchar(40),
-		password varchar(40)
+		login varchar(40),
+		password varchar(500),
+		role_id int REFERENCES role (id)
 	);
 
-INSERT USER(id, firstname, lastname, email) VALUES
+INSERT USER(id, firstname, lastname, email, login) VALUES
 	(
-		1, 'Alex', 'Prostio', "a@mail.ru"
+		1, 'Alex', 'Prostio', "a@mail.ru", "Alex"
 	) 
 	ON DUPLICATE KEY UPDATE 
-    firstname="Alex", lastname='Prostio', email="a@mail.ru";
+    firstname="Alex", lastname='Prostio', email="a@mail.ru", login="Alex";
 
-INSERT USER(id, firstname, lastname, email) VALUES
+INSERT USER(id, firstname, lastname, email, login) VALUES
 	(
-		2, 'Fred', 'Jecky', "frej@gmail.com"
+		2, 'Fred', 'Jecky', "frej@gmail.com", "Fred"
 	) 
 	ON DUPLICATE KEY UPDATE 
-    firstname="Fred", lastname='Jecky', email="frej@gmail.com";
+    firstname="Fred", lastname='Jecky', email="frej@gmail.com", login="Fred";
 
 SELECT * FROM user;
 SHOW TABLES;
