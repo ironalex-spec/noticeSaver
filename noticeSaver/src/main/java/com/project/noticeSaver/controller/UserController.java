@@ -3,16 +3,14 @@ package com.project.noticeSaver.controller;
 import com.project.noticeSaver.entity.UserEntity;
 import com.project.noticeSaver.repository.UserEntityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
-@RestController
+@Controller
 public class UserController {
 
     private final UserEntityRepository userEntityRepository;
@@ -25,6 +23,16 @@ public class UserController {
     @GetMapping("/users")
     public List<UserEntity> users(){
         return userEntityRepository.findAll();
+    }
+
+    @RequestMapping("/user/startpage")
+    public String getUserRedirect() {
+        return "greeting";
+    }
+
+    @RequestMapping("/auth/user")
+    public String authUser() {
+        return "redirect:/user/startpage";
     }
 
 }

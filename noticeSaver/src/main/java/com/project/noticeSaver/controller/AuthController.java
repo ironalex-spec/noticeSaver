@@ -8,11 +8,9 @@ import com.project.noticeSaver.controller.requests.RegistrationRequest;
 import com.project.noticeSaver.entity.UserEntity;
 import com.project.noticeSaver.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -34,8 +32,8 @@ public class AuthController {
     }
 
     @PostMapping("/auth")
-    public AuthResponse auth(@RequestBody AuthRequest request) {
-        System.out.println("request " + request);
+    public AuthResponse auth(@CookieValue("token") String tokenCookie, @RequestBody AuthRequest request) {
+        System.out.println("token " + tokenCookie);
 
 
         UserEntity userEntity = userService.findByLoginAndPassword(request.getLogin(), request.getPassword());
@@ -44,10 +42,6 @@ public class AuthController {
         return new AuthResponse(token);
     }
 
-    @PostMapping("/login")
-                            //RESPONSE JSON FORMAT!!!!!
-    public String login(@RequestBody AuthRequest aurequest, Model model, HttpServletRequest request) {
-        System.out.println(aurequest.getLogin() +" p="+ aurequest.getPassword());
-        return "index";
-    }
+    //In this request get token in HTTP body
+
 }
